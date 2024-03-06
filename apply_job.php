@@ -152,7 +152,7 @@
         $id_job = $_POST['id_job'];
         $job_seeker = $_POST['job_seeker'];
 
-        move_uploaded_file($_FILES["file"]["tmp_name"], `/files`.$file);
+        move_uploaded_file($_FILES["file"]["tmp_name"], `/files` .$file);
 
         $sql = mysqli_query($conn, "select * from job_apply where job_seeker = '$job_seeker' and id_job = '$id_job'");
         if(mysqli_num_rows($sql)>0) {
@@ -162,7 +162,7 @@
             $target_dir = "files/";
             $target_file = $target_dir . basename($_FILES["file"]["tmp_name"]);
 
-            move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
+            move_uploaded_file($_FILES["file"]["tmp_name"], `/files` .$file);
             $query = mysqli_query($conn, "insert into job_apply(first_name, last_name, dob, file, id_job, job_seeker, mobile_number)
             values('$first_name','$last_name','$dob','$file', '$id_job', '$job_seeker', '$number')");
             if($query) { ?>
